@@ -3,7 +3,7 @@ import sys
 import numpy as np
 import cv2
 
-path_name = r'D:\train'
+path_name = os.getcwd() + '/train'
 
 image_size = 32
 images = []
