@@ -6,12 +6,14 @@ import image_processing
 imagecount = 500
 cap = cv2.VideoCapture(0)
 model = torch.load('facial_cnn.pt')
-classfier = cv2.CascadeClassifier("D:\opencv\opencv\sources\data\haarcascades\haarcascade_frontalface_default.xml")
+classifier = cv2.CascadeClassifier("D:\opencv\opencv\sources\data\haarcascades\haarcascade_frontalface_default.xml")
+#path of classfier should be changed to the corresponding saving path of haarcascade_frontalface_default.xml, this path only exists in Hana's laptop
+
 while True:
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    faceRects = classfier.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=3, minSize=(32, 32))
+    faceRects = classifier.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=3, minSize=(32, 32))
     if len(faceRects) > 0:
         for faceRect in faceRects:
             global img
